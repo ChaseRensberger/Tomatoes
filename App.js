@@ -1,18 +1,22 @@
 import React from 'react';
 import {StatusBar,Text} from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
 import Home from './pages/Home';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import Explore from './pages/Explore';
+import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 
 const App = () => {
 
   const Tab = createMaterialTopTabNavigator();
 
+  const navTheme = DefaultTheme;
+  navTheme.colors.background = '#ffffff';
+
   return (
     <>
       <StatusBar barStyle="light-content" />
-      <NavigationContainer>
+      <NavigationContainer
+      theme={navTheme}>
         <Tab.Navigator
           screenOptions={{
             // trying to make the little dots appear under the names

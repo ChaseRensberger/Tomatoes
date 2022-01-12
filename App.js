@@ -1,46 +1,42 @@
-import React, { useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
+import React from 'react';
+import {StatusBar,Text} from 'react-native';
+import Home from './pages/Home';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import Explore from './pages/Explore';
+import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 
-export default function App() {
-  const [enteredGoal, setEnteredGoal] = useState('');
+const App = () => {
 
-  const goalInputHandler = (enteredText) => {
-    setEnteredGoal(enteredText);
-  }
+  const Tab = createMaterialTopTabNavigator();
 
-  const addGoalHandler = () => {
-    console.log(enteredGoal);
-  }
+  const navTheme = DefaultTheme;
+  navTheme.colors.background = '#ffffff';
 
   return (
-    <View style={styles.screen}>
-      <View style={styles.inputContainer}>
-        <TextInput
-          placeholder="Course Goal"
-          style={styles.input} 
-          onChangeText={goalInputHandler}
-          value={enteredGoal}/>
-        <Button title="ADD" />
-      </View>
-    </View>
+    <>
+      <StatusBar barStyle="light-content" />
+      <NavigationContainer
+      theme={navTheme}>
+        <Tab.Navigator
+          screenOptions={{
+            // trying to make the little dots appear under the names
+            // tabBarIcon: ({ focused }) => {
+            //   if(focused) {
+            //     return <Text style={{fontSize:6, alignSelf:'center', marginBottom: 0}}>{'\u2B24'}</Text>
+            //   }
+            //     return null;
+            // },
+            tabBarIndicatorStyle: {display: 'none'},
+            tabBarActiveTintColor: '#00008B',
+            tabBarLabelStyle: { fontSize: 14 }
+          }}
+        >
+          <Tab.Screen name="Home" component={Home} />
+          <Tab.Screen name="Explore" component={Explore} />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  screen: {
-    padding: 50
-  },
-  inputContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center'
-  },
-  input: {
-    borderColor: 'black',
-    borderWidth: 1,
-    padding: 10,
-    width: '80%'
-  }
-
-});
+export default App;

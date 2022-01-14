@@ -4,6 +4,7 @@ import {HomepageStyle} from '../assets/StyleSheet';
 
 const Home = () => {
 
+  
   const articles = [{
     data: [{
       title: "Top 10 construction mistakes you shouldn't make", 
@@ -49,10 +50,19 @@ const Home = () => {
 
     <SafeAreaView>
         <ScrollView>
-            <View style={{paddingTop: 200}}>
+            <View style={{backgroundColor: '#9540a1', height: 250}}>
+              <Text style={{paddingTop: 150, textAlign: 'center', fontSize: 16}}>
+                Good Morning!
+                
+              </Text>
+              <Text style={{paddingTop: 10, textAlign: 'center', fontSize: 24}}>
+                  Start Listening to NOVA Build.
+              </Text>
+            </View>
+            <View style={{paddingTop: 0}}>
             </View>
             <Text style={{fontFamily:'-apple-system, BlinkMacSystemFont, "Segoe UI"', fontSize:24,paddingTop:15,
-    paddingLeft:25,paddingBottom:10, color: '#1E136C'}}>Recent Articles</Text>
+              paddingLeft:25,paddingBottom:10, color: '#1E136C'}}>Recent Articles</Text>
             <View>
               <SectionList style={{paddingBottom:40, paddingLeft:20, paddingRight:20}}
               sections={articles}

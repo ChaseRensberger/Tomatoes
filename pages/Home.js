@@ -1,9 +1,13 @@
 import React from 'react';
-import { SafeAreaView, Text, ScrollView,View, SectionList, Image } from 'react-native';
+import { SafeAreaView, Text, ScrollView,View, SectionList, Image,StatusBar,StyleSheet } from 'react-native';
 import {HomepageStyle} from '../assets/StyleSheet';
 
-const Home = () => {
+const handlePress = () => {
+  console.log('pressed');
 
+}
+
+const Home = () => {
   
   const articles = [{
     data: [{
@@ -46,55 +50,55 @@ const Home = () => {
     ]
   }];
 
-  return (
 
-    <SafeAreaView>
-        <ScrollView>
-            <View style={{backgroundColor: '#9540a1', height: 250}}>
-              <Text style={{paddingTop: 150, textAlign: 'center', fontSize: 16}}>
-                Good Morning!
-                
-              </Text>
-              <Text style={{paddingTop: 10, textAlign: 'center', fontSize: 24}}>
-                  Start Listening to NOVA Build.
-              </Text>
-            </View>
-            <View style={{paddingTop: 0}}>
-            </View>
-            <Text style={{fontFamily:'-apple-system, BlinkMacSystemFont, "Segoe UI"', fontSize:24,paddingTop:15,
-              paddingLeft:25,paddingBottom:10, color: '#1E136C'}}>Recent Articles</Text>
-            <View>
-              <SectionList style={{paddingBottom:40, paddingLeft:20, paddingRight:20}}
-              sections={articles}
-              renderItem={({item}) => <View style={{borderBottomColor:'lightgrey',borderBottomWidth:1
-              ,paddingTop:10, paddingLeft:5, flexDirection:'row', justifyContent:'space-between'}}>
-              
+    return (
+      <SafeAreaView>
+          <ScrollView>
+              <View style={{backgroundColor: '#160e4e', height: 250}}>
+                <Text style={{paddingTop: 150, textAlign: 'center', fontSize: 16,color:'white'}}>
+                  Good morning!
+                  
+                </Text>
+                <Text style={{paddingTop: 10, textAlign: 'center', fontSize: 24,color:'white'}}>
+                    Start Listening to NOVA Build.
+                </Text>
+              </View>
+              <View style={{paddingTop: 0}}>
+              </View>
+              <Text style={{fontFamily:'-apple-system, BlinkMacSystemFont, "Segoe UI"', fontSize:24,paddingTop:15,
+                paddingLeft:25,paddingBottom:10, color: '#1E136C'}}>Recent Articles</Text>
               <View>
-              <Text style={{
-                paddingBottom:5,
-                fontFamily:'-apple-system, BlinkMacSystemFont, "Segoe UI"',
-                fontSize:17,fontWeight:500, maxWidth:250}}>
-                  {item.title}
-              </Text>
-              <Text style={{
-                fontFamily:'-apple-system, BlinkMacSystemFont, "Segoe UI"',
-                fontSize:13}}>
-                {item.time}
-              </Text>
+                <SectionList style={{paddingBottom:40, paddingLeft:20, paddingRight:20}}
+                sections={articles}
+                renderItem={({item}) => <View style={{borderBottomColor:'lightgrey',borderBottomWidth:1
+                ,paddingTop:10, paddingLeft:5, flexDirection:'row', justifyContent:'space-between'}}>
+                
+                <View>
+                <Text onPress={handlePress} style={{
+                  paddingBottom:5,
+                  fontFamily:'-apple-system, BlinkMacSystemFont, "Segoe UI"',
+                  fontSize:17,fontWeight:500, maxWidth:250}}>
+                    {item.title}
+                </Text>
+                <Text style={{
+                  fontFamily:'-apple-system, BlinkMacSystemFont, "Segoe UI"',
+                  fontSize:13}}>
+                  {item.time}
+                </Text>
+                </View>
+                <Image
+                  style={{width: 80, height: 70, marginRight:10,marginBottom:6,borderRadius:2}}
+                  source={{uri: item.image}}
+                />
+                </View>
+               }
+                keyExtractor={(item,index) => index}
+                >
+                </SectionList>
               </View>
-              <Image
-                style={{width: 80, height: 70, marginRight:10,marginBottom:6,borderRadius:2}}
-                source={{uri: item.image}}
-              />
-              </View>
-             }
-              keyExtractor={(item,index) => index}
-              >
-              </SectionList>
-            </View>
-        </ScrollView>
-    </SafeAreaView>
-  );
+          </ScrollView>
+      </SafeAreaView>
+    );
 };
 
 export default Home;
